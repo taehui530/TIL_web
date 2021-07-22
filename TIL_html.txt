@@ -1,0 +1,75 @@
+1. <strong></strong> 태그
+
+2. <u>태그 : 밑줄underline
+
+3. <h1>~<h6> 제목 태그 
+: 숫자가 올라갈수록 글씨가 작아짐.
+숫자가 나오는 태그는 일반적인 글씨보다 두꺼움
+줄바꿈이 됨.
+
+4. html new line tag <br>
+-br태그는 닫지 않는다 ( 단일로 사용)
+-여러번 사용 가능
+
+5. html paragraph tag :단락태그<p>
+열리는 태그와 닫는 태그 존재 ( 쌍으로 존재)
+의미론적 태그. 정보로서 좀 더 가치있는 html. ( <br> vs <p>)
+-> 단점 : 정해져있는 여백만큼만 띄울 수 있음(자유도 떨어짐) 
+=>css로 커버가능
+css에서 태그와 태그사이의 여백을 나타내는 코드
+<p style="margint-top:45px;"></p>
+
+6.
+*html이 중요한 이유
+
+<span style="font-size:24px">
+coding
+</span>
+
+vs
+
+<h3>coding</h3>
+
+--> 검색엔진에서 노출되는건 제목!
++ 웹페이지는 모든 운영체제에서 동작
++ 누구나 소스코드를 볼 수 있음.
++ 웹은 저작권이 없는 공공재임.
+==> 개방성accessibility
+
+7. 
+*부모자식관계의 태그
+<ul> - <li>태그 : 리스트(li)들을 묶는, ul태그 #unordered list
+<ol> - <li> 태그 : 리스트(li)들을 묶으면서, 자동 숫자 넘버링. #ordered list
+
+8. 문서의 구조와 top태그들
+--> head, body, html, title, meta 태그
+
+8-1. head
+[ 본문을 설명하는 태그들 : <head>태그로 묶는다.] 
+- 제목 : <title> -> 탭에 제목 표시됨.
+- <meta charset="utf-8"> : 캐릭터셋 utf-8로 열렴. 아니면 글씨 깨짐.
+ 
+8-2. body
+[본문]은 <body>라는 태그로 묶음.
+
+==> 8.3 html
+-<html>태그로 모든 코드를 묶음. 최상위 태그.
+- html태그 그 위 ( 코드의 맨 위) : <!doctype html> 써주기.  'html파일이다.'
+
+8.4
+*태그가 웹의 왕국이라면, <a>은 이 왕국의 제왕이다.
+--> anchor의 첫 글자를 땀. 배가 정박할 때 내리는 닻을 의미.
+==> 링크를 의미. hypert Text
+
+<a href="주소"> </a>
+
+-href : Hypertext Reference
+-targt
+-title
+등 attributes들 옵션.
+
+8.5 웹, 인터넷
+- 웹페이지들을 하나의 책처럼 엮은게, 웹사이트
+- 인터넷 vs  웹
+인터넷 : 도시, 도로, 운영체제
+웹 : 도시위의 건물하나. 도로위의 자동차 한대, 그 운영체제 위의 프로그램 하나.
