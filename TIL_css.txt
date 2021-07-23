@@ -1,0 +1,241 @@
+WEB2. CSS
+
+1. html vs css
+
+html : 전자문서 생성, 컴퓨터를 통한 정보 표현 및 인터넷을 통한 정보 공유.
+--> 불만족1 : 아름다움에 대한 욕망
+
+방법1. 쉽지만 한계 -> html에 새로운 디자인 태그 ex. <font>
+방법2. 근본적 해결 -> css
+
+방법1의 한계
+: 
+1) 웹'에 대한 정보가 아닌 '디자인'에 대한 정보. 
+디자인 자체는 웹에서 의미있는 정보라고 할 수 없음. 
+웹페이지라는 소중한 정보 안에, 의미있는 정보가 아닌 디자인코드가 섞이면서,
+웹페이지의 정보로서의 가치가 현격히 떨어짐.
+
+2) a태그가 1억개가 있음. 근데 날마다, 그 태그의 color를 매일마다 다르게 바꾸라고함.
+--> 1억개를 다 바꿔야하는 절망적 상황
+==> css로 극복 가능.
+
+<방법2> css
+웹브라우저한테 css문법을 사용할것이라고 html의 문법으로 말해줘어야함.
+: <style>태그.
+--> html문법이면서, '스타일태그안의 코드는 css니까, css문법에 맞게 처리하렴'의 뜻
+#-----------------------------------------------
+<head>
+  <title> WEB1 - html </title>
+  <meta charset="utf-8">
+  <style>
+  /* 모든 a태그에 대해서, 이렇게 처리해라. */
+  a { 
+    color:red;
+  }
+  </style>
+</head>
+#--------------------------------------------
+==> html의 한계1 극복 가능 [유지보수, 효율성]
+& 중복된 코드 제거 가능.( 웹페이지의 규모 줄일 수 있음, 가독성 )
+& 디자인에 대한 코드를 한 곳에 묶어두고, 정보만이 적힌 html코드에 전념해서 분석가능.
+
+2. css 기본 문법
+
+방법1. <style>태그 속, selector{ property : value; } <--중괄호는 'declaration'
+ex. 
+<style>
+  a { 
+    color:red;
+  }
+  </style>
+
+방법2. style="" : html태그의 속성으로써, 그 값으로 css효과가 들어감  ->css문법으로 해당 속성 처리.
+ex.
+  <ol>
+      <h1><a href="index.html"> WEB </a></h1>
+    <li> <a href="1.html"> HTML </a></li>
+    <li> <a href="2.html" style="color:red; text-decoration: underline"> CSS </a></li>
+    <li><a href="3.html"> JavaScript </a></li>
+  </ol>
+
+=> style=""안의 효과 두개 이상일 경우, 세미콜론으로 구분.
+
+
+3. 다양한 property와 selector
+
+1) property 스스로 찾기.
+ex. css text size property, css text center property
+
+2) selector( 선택자 )
+- class : 태그안의 속성값으로 들어감. 그룹핑.
+ex.
+<ol>
+    <h1><a href="index.html"> WEB </a></h1>
+    <li> <a href="1.html" class="saw" > HTML </a></li>
+    <li> <a href="2.html" class="saw" > CSS </a></li>
+    <li><a href="3.html"> JavaScript </a></li>
+  </ol>
+ 
+- .(dot) : 클래스 선택자.
+ex.
+<style>
+  .saw{
+    color:gray;
+    /* 이 웹페이지의 클래스 값이 saw인 모든 태그에 대해서, 이렇게 처리해라. */
+  }
+  </style>
+
+**클래스의 속성값으로 여러개가 올 수 있음.  & 띄어쓰기로 구분.**
+
+<ol>
+    <h1><a href="index.html"> WEB </a></h1>
+    <li> <a href="1.html" class="saw" > HTML </a></li>
+    <li> <a href="2.html" class="saw active" > CSS </a></li> # 방문했던 페이지 class이면서, 현재 방문중인 페이지 class인 경우
+    <li><a href="3.html"> JavaScript </a></li>
+  </ol>
+
+->  style태그에서 여러개의 선택자를 통해서, 하나의 태그를 공동으로 제어 가능.
+<style>
+
+  .saw{
+    color:gray;
+  }
+
+  .active{
+    color: red;
+  }
+
+  </style>
+
+==> 그다지 좋은 방법은 아님.
+선택자의 순서에 따라, 회색이 되거나 빨간색이 되거나.
+보다 가까이에 있는 명령에 영향을 받음. ( 같은 우선순위라면, 나중에 온 선택자가 영향을 줌.)
+==> 우선순위 선택자 : ID선택자 (#)
+1. id선택자 > 2. 클래스 선택자 > 3.태그선택자
+( 좀 더 구체적인 것이, 포괄적인것보다 우선순위가 높음 )
+
+
+ex.
+<style>
+  .saw{
+    color:gray;
+  }
+
+  #active{
+    color: red;
+  }
+  </style>
+
+<body>
+<ol>
+    <h1><a href="index.html"> WEB </a></h1>
+    <li> <a href="1.html" class="saw" > HTML </a></li>
+    <li> <a href="2.html" class="saw", id="active"> CSS </a></li> # 방문했던 페이지 class이면서, 현재 방문중인 페이지 class인 경우
+    <li><a href="3.html"> JavaScript </a></li>
+  </ol>
+
+<body>
+
+**id는 학번같은 것. id의 핵심은 중복돼서는 안됨. 유일무이한 값.**
+
+4. 박스모델
+: 박스모델이란, html태그 하나하나를 일종의 박스처럼 취급해서
+그것의 부피감을 결정하는 것.
+
+
+-h1태그는 화면 전체를 사용하고, a태그는 그 컨텐츠 만큼만 사용한다.
+  <style>
+      h1{
+        border-width:5px;
+        border-color:red;
+        border-style:solid;
+      }
+     a{
+        border-width:5px;
+        border-color:red;
+        border-style:solid;
+      }
+    </style>
+
+--> block level element : 화면 전체를 사용하는 태그
+inline element : 자신의 부피만큼 차지하는 태그
+
+==> display라는 속성의 기본값일 뿐, 그 기본값은 css를 통해서 언제든 바뀔 수 있음.
+
++ block level element를 inline처럼 쓰고 싶으면, display : inline;
+inline을 block처럼? display : block
+
+*콤마 선택자로 중복 제거
+  <style>
+      h1,a{ 
+        border-width:5px;
+        border-color:red;
+        border-style:solid;
+      }
+    </style>
+
+=> 한번 더 제거
+
+   h1,a{ 
+        border: 5px solid red; 
+
+}
+
+==> 순서 상관 없음
+
+**<박스모델>**
+padding : 콘텐츠와 테두리 사이의 간격
+margin : 테두리와 테두리 사이의 간격
+width ...height...
+
+**웹페이지 -> 마우스 우클릭 -> 검사 !!!!!!!!!!!!!!
+
+5. 그리드
+
+- 아무의미없이, 디자인을 위한 태그. 무색무취의 태그 
+<div> : 기본적으로 block level이라 줄바꿈 자동
+<span> : inline element
+
+- grid
+display="grid"
+grid-template-columns : 150px 1fr;
+
+
+사용가능한 화면전체를 1fr만큼으로 자동조정
+150px 1fr : 전체화면에서 150고정하고, 남은 전체화면
+2fr 1fr : 전체화면을 3으로 두고,  2:1로 나눔
+1fr 1fr : 1:1로
+
+**유용한 사이트**
+caniuse.com
+: html,css,js의 기술들 중에서, 현재 웹브라우저들이 그 기술을 얼마나 채택하고있는가를 알려주는 서비스.
+
+6. 미디어 쿼리
+반응형 웹 디자인: 화면의 크기에 따라서, 각 웹페이지의 요소들이 반응해서 최적화된 모양으로 바뀌게 하는 것.
+-> 미디어 쿼리
+
+화면의 크기가 800픽셀보다 크냐 작냐에 따라서, 요소가 보이고 안보이고를 결정하고싶다?
+
+@media( max-width:800px ){
+	div{ display:none; }
+==> media의 width가 최대가 800인 경우( 그 이하에서 움직일 때)에는 display none.
+800까지는 아래코드처럼 수행한다.
+
+max width : 800px -> 800까지는~
+min width : 800px -> 800 부터는~
+
+
+7. css코드 재사용
+<style>태그를 별도로 빼서 .css파일로 저장.
+-> <link rel="stylesheet" href="style.css">
+: 이 페이지는 style.css파일과 link되어있고, 웹브라우저는 이걸 다운받아서 적용시킨다.
+
+어떤 것이 더 효율적인가?
+캐싱. 
+하나의 웹페이지에서 여러개의 파일을 별로도 바깥에 두고, 다운을 받는것과
+웹페이지안에 css코드를 내장하는 것 중에서
+네트워크측면에서 어떤게 더 효율적일까?
+-> '캐싱' 
+한번 .css파일을 다운받으면, 그 파일이 바뀌기 전까지는 
+우리의 컴퓨터에 저장돼있는 파일을 가져올 수 있어서
+속도를 높이고, 트래픽 비용도 줄일 수 있음.
