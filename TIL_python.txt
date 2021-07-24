@@ -1,0 +1,156 @@
+1. 자료형
+a_string= "like this" :string
+a_number =3
+a_float=3.12
+a_boolean= False
+a_none = None #존재하지않음
+
+2. sequence
+
+1) 열거형타입 list, tuple
+1> list : mutable sequence[ ]
+days = ["Mon","Tue","Wed","Thur","Fri"]
+-->add, reverse, delelte, append등 수정가능한 열거타입
+
+2>tuple : immuatble sequence( )
+days = ("Mon","Tue","Wed","Thur","Fri")
+-->수정불가능한 열거타입
+
+
+2) dictionary : key와 value { }
+name ="Nico"
+age =29
+korean = True
+fave-food= ["Kimchi","Sashimi"]
+
+==> dictionary로 표현하면 
+
+nico={
+"name" :"Nico"
+"age" :29
+"korean" :True
+"fav_food": ["Kimchi","Sashimi"]
+}
+
+* key와 value 추가가능
+nico["handsome"] : True
+
+--> print(nico)
+
+{
+"name" :"Nico"
+"age" :29
+"korean" :True
+"fav_food": ["Kimchi","Sashimi"]
+"handsome":True #추가됨.
+}
+
+3. function
+
+1) define
+def say_hello():
+	print( " hello" ) #body는 tab
+
+2) arguments
+def say_hello( name ):
+	print( " hello, ", name ) #함수 정의에 argument의 데이터타입 안써도됨. 유효한 타입 다 가능
+
+=>ex. say_hello("anna") : hello, anna
+say_hello(True) : hello, True
+
+def say_hello( name ):
+	print( f" hello, {name}", ) 
+#string안에 변수를 포함시키고 싶을 경우 , string앞(큰따옴표앞)에 f를 쓰고, 변수의 이름을{중괄호}로 묶어주면, 문자열내에 변수로 바로 접근 가능
+
+def say_hello( name="taehui"  ):
+	print( " hello, ", name ) #default값 넣어둘 수 있음.
+
+3) returns
+
+def plus ( a, b):
+	return a+b
+
+def plus ( a, b=0 ):
+	return a+b #default value
+
+4) keyworded arguments
+[1] positional argument : 위치에 의존적인 argument
+
+def plus ( a, b):
+	return a+b
+
+result = plus(2,4) 
+#함수를 call한 argument는, define된 argument의 순서에 맞춰서 쌍이 정해짐.
+# a=2, b=4
+
+[2] keyword argument : 위치에 따라서 정해지는게 아닌, argument의 이름으로 쌍을 이룸.
+result = plus( b=30, a=1) 
+
+->ex2
+def say_hello( name, age):
+	return f"hello my name is {name}, I'm {age}years old."
+
+hello= say_hello( age =23, name="taehui")
+print ( hello )
+
+4. 타입 변환
+
+def minus (a,b):
+   return float(a)-float(b) 
+
+=>print( minus("1",2))
+=> -1.0
+
+4. 조건문
+
+def plus ( a, b):
+  if type(a) is not int or type(a) is not float:
+    print( "sorry enter the number as a ")
+    return None
+
+  elif type(b) is not int or type(b) is not float:
+    print( "sorry enter the number as b")
+    return None
+
+  else:
+    return a+b
+
+- is, is not, !=, ==, >=, >, <=, < : (comparisons)
+- x and y, x or y, not x :  ( boolean operatior)
+- if, elif, else
+
+5. Loop
+
+for 변수 in 배열 :
+	~body~
+
+- 배열 : string, tuple, list...
+
+ex>
+days = ("Mon", "Tue", "Wed", "Thur", "Fri" )
+
+for x in days:
+	print(x)
+
+ex2 >
+
+for x in [1,2,3,4,5]:
+	print(x)
+
+ex3>
+
+for i in " taehui":
+	print( i )
+
+#string도 배열이다!
+
+6. modules
+
+import math # 모듈 전체 다 가져올 때 
+from math import fsum # 특정 함수만 가져올 때
+
+from math import fsum as fs # 모듈/함수이름 정해줄 수 있음.
+import pandas as pd
+
+7. print함수
+**print()는 무한으로 매개변수를 가질 수 있다. 
