@@ -59,11 +59,13 @@ def extract_indeed_pages():
 #각 페이지에서 일자리 정보 추출 후 return까지
 def extract_indeed_jobs( last_page ):
     jobs=[]
+    companies = []
     for page in range(last_page):
         result = requests.get(f"{URL}&start={page*LIMIT}")
         # print( result.status_code ) #동작하는지 확인용
         soup = BeautifulSoup(result.text, 'html.parser') #data extract
 
+        #제목추출
         results = soup.find_all("h2",{"class":"jobTitle"})
 
         #에러
@@ -77,8 +79,25 @@ def extract_indeed_jobs( last_page ):
             all_spans = h2_item.find_all("span")
             for span_item in all_spans:
                 if span_item.get("title") is not None:
-                    print(span_item.get("title"))
+                    # print(span_item.get("title"))
                     jobs.append(span_item.get("title"))
+
+        #회사 추출
+        #회사정보에 링크가 없는 경우 있음. --> <a>태그로 찾으면 누락되는 회사 발생.
+        # cNames = soup.find_all("span",{"class":"companyName"})
+        #
+        # for x in cNames:
+        #     all_anchors = x.find_all("a")
+        #     for anchor_item in all_anchors:
+        #         if anchor_item is not None:
+        #             #print(anchor_item.text)
+        #             companies.append(anchor_item.text)
+
+
+        cNames = soup.find_all("span",{"class":"companyName"})
+
+
+    print(companies)
 
     return jobs
 
